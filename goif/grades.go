@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"sort"
 	"time"
 )
 
@@ -96,5 +97,10 @@ func main() {
 	students := Students[:]
 
 	runBusinessLogic(students)
+
+	sort.Slice(students, func(i, j int) bool {
+		return students[i].grade < students[j].grade
+	})
+
 	printStudentDetails(students)
 }
